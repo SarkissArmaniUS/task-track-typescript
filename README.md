@@ -30,13 +30,13 @@ A full-stack Task Manager application built with modern technologies including *
 ## 🛠 Tech Stack
 
 **Frontend:**
-- Next.js 15
-- React 19
-- TailwindCSS 4
+- Next.js
+- React
+- TailwindCSS
 - TypeScript
 
 **Backend:**
-- Express 5
+- Express
 - MongoDB + Mongoose
 - JWT (jsonwebtoken)
 - bcryptjs
