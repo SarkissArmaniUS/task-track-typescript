@@ -21,3 +21,4 @@ A full-stack Task Manager application built with modern technologies including *
 
 ### Client (`/client`)
 
+### Server (`/server`)
