@@ -1,11 +1,11 @@
-// import express from 'express'
+import { Router } from 'express'
 
-// import authRouter from './authRouter'
-// import devRouter from './devRouter'
+import authRouter from './authRouter'
+import devRouter from './devRouter'
 
-// const router = express.Router()
+const router = Router()
 
-// router.post('/auth', authRouter)
-// router.post('/dev', devRouter)
+router.use('/', authRouter)
+router.use('/', devRouter)
 
-// export default router
+export default router

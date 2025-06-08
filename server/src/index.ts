@@ -8,8 +8,9 @@ import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 
 // Router
-import authRouter from './router/authRouter'
-import devRouter from './router/devRouter'
+// import authRouter from './router/authRouter'
+// import devRouter from './router/devRouter'
+import router from './router'
 
 dotenv.config()
 
@@ -36,5 +37,6 @@ mongoose.Promise = Promise
 mongoose.connect(MONGO_URL)
 mongoose.connection.on('error', (error: Error) => console.log(error))
 
-app.use('/', authRouter)
-app.use('/', devRouter)
+// app.use('/', authRouter)
+// app.use('/', devRouter)
+app.use('/', router)
