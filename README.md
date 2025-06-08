@@ -22,3 +22,52 @@ A full-stack Task Manager application built with modern technologies including *
 ### Client (`/client`)
 
 ### Server (`/server`)
+
+
+
+---
+
+## 🛠 Tech Stack
+
+**Frontend:**
+- Next.js 15
+- React 19
+- TailwindCSS 4
+- TypeScript
+
+**Backend:**
+- Express 5
+- MongoDB + Mongoose
+- JWT (jsonwebtoken)
+- bcryptjs
+- TypeScript
+
+---
+
+## 🧪 Installation & Setup
+
+1. **Clone the repository:**
+```bash
+git clone https://github.com/your-username/task-manager-app.git
+
+
+# Client
+cd client
+npm install
+
+# Server
+cd ../server
+npm install
+
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+PORT=your_localhost
+
+# In one terminal (client)
+cd client
+npm run dev
+
+# In another terminal (server)
+cd server
+npm run dev
+
