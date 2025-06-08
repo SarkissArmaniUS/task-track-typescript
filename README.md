@@ -48,7 +48,7 @@ A full-stack Task Manager application built with modern technologies including *
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/your-username/task-manager-app.git
+git clone https://github.com/your-username/task-track-typescript.git
 
 
 # Client
