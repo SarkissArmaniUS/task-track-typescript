@@ -9,7 +9,7 @@ A full-stack Task Manager application built with modern technologies including *
 - 🔐 User authentication with JWT (Signup & Login)
 - 🧠 Auth state managed with React Context API
 - 🛡 Protected dashboard route (middleware-based)
-- ✅ Create / Read / Delete tasks
+- ✅ Create / Read / Update / Delete tasks
 - 🧩 Clean modular folder structure
 - 💅 Styled with TailwindCSS
 - 🔧 Written in TypeScript (frontend and backend)
