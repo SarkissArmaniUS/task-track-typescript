@@ -41,7 +41,7 @@ router.post('/signin', async (req, res) => {
   if (!user) return res.status(400).json({ error: 'User not found' })
 
   const match = await bcrypt.compare(password, user.password)
-  if (!match) return res.status(400).json({ error: 'Incorrect password' })
+  if (!match) return res.status(400).json({ error: 'Incorrect password or name' })
 
   const token = jwt.sign({ userId: user._id }, JWT_SECRET)
 
