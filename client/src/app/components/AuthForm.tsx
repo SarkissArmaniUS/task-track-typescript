@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "@/context/AuthContext";
 import Input from "./AuthInput";
+import { Message } from "./Message";
 
 export default function AuthForm() {
   const { signin, signup } = useAuth();
@@ -14,7 +15,6 @@ export default function AuthForm() {
   const [status, setStatus] = useState(false);
   const [timer, setTimer] = useState<number>(0);
 
-  // Таймер автоматичного розблокування
   useEffect(() => {
     let interval: NodeJS.Timeout;
     if (status && timer > 0) {
@@ -42,7 +42,7 @@ export default function AuthForm() {
           const newCount = prev + 1;
           if (newCount >= 3) {
             setStatus(true);
-            setTimer(30); // 30 секунд блокування
+            setTimer(30);
           }
           return newCount;
         });
@@ -57,7 +57,11 @@ export default function AuthForm() {
     try {
       await signup(email, password);
     } catch (err: any) {
-      setError(err.message || "Signup failed");
+      if (err.message.includes("User already exists")) {
+        setError("User already exists");
+      } else {
+        setError(err.message || "Signup failed");
+      }
     }
   };
 
@@ -65,8 +69,19 @@ export default function AuthForm() {
     <div className="max-w-md mx-auto p-6 border rounded shadow">
       <h1 className="text-2xl font-bold mb-4">Login / Signup</h1>
 
-      <Input status={status} value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
-      <Input status={status} value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password" />
+      <Input
+        status={status}
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email"
+      />
+      <Input
+        status={status}
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Password"
+        type="password"
+      />
 
       <div className="flex gap-2 mt-4">
         <button
@@ -86,19 +101,22 @@ export default function AuthForm() {
       </div>
 
       {status && timer > 0 && (
-        <p className="text-red-500 mt-2">Too many attempts. Try again in {timer}s.</p>
+        <Message
+          message={`Too many attempts. Try again in ${timer}s.`}
+          type="error"
+        />
       )}
+
+      {error && <Message message={error} type="error" />}
 
       {support && !status && (
         <button
           className="text-green-500 mt-4"
           onClick={() => alert("Pass and nickname will be sent to your email")}
         >
-          Forgot the password or nickname?
+          Reset the password
         </button>
       )}
-
-      {error && <p className="text-red-500 mt-4">{error}</p>}
     </div>
   );
 }
